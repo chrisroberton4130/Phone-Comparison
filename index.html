@@ -1,0 +1,118 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Phone Comparison</title>
+<style>
+html,body{
+margin:0;
+padding:0;
+overflow:hidden;
+background:#000;
+}
+
+#viewer{
+width:100vw;
+height:100vh;
+overflow:hidden;
+position:relative;
+touch-action:none;
+}
+
+#left,#right{
+position:absolute;
+top:0;
+left:0;
+pointer-events:none;
+}
+
+#left{
+clip-path:inset(0 50% 0 0);
+}
+
+#right{
+clip-path:inset(0 0 0 50%);
+}
+
+#divider{
+position:absolute;
+left:50%;
+top:0;
+bottom:0;
+width:2px;
+background:white;
+z-index:100;
+}
+</style>
+</head>
+
+<body>
+
+<div id="viewer">
+
+<img id="left"
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTN-NXJqKCUFuqmQCelVnwiqZ8-GDmVI6SQNmZJprxhPvYNrAUsnKjt8Sk6QEJGV8pvw3pfACzFBkAw5e2oXbooav2L-Sy9eOXF39ponr2N_4-oFR5uvE22yi2QpUrp6OXpwI_H4oazCm4MzlHR1cWlDXu6c0Z1pNEy8bLz59kXrw4I0qxWlUzbRwPXatn/s16000/X200U.jpg">
+
+<img id="right"
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-WdTYZKSETiLxd3hlZana4syFMPvIbnnjNgdvNHRr65oHD43p8B5AwBkORV-_zwifrcGNxk0Ah298Fgt5ViGTlskIpfb4r1ZqNx0NhJpL8JWWW9QvRACKzUVy4v4x8ggLBuSDwnocMRe4g8znClgYmZugVr6zmZb6SQbDteN2cjgwUnRYkmjFiMVnlFzv/s16000/X8U.jpg">
+
+<div id="divider"></div>
+
+</div>
+
+<script>
+
+const left=document.getElementById('left');
+const right=document.getElementById('right');
+const viewer=document.getElementById('viewer');
+
+let x=0;
+let y=0;
+
+function update(){
+left.style.transform=`translate(${x}px,${y}px)`;
+right.style.transform=`translate(${x}px,${y}px)`;
+}
+
+left.onload=function(){
+
+x=(viewer.clientWidth-left.naturalWidth)/2;
+y=(viewer.clientHeight-left.naturalHeight)/2;
+
+update();
+};
+
+let dragging=false;
+let sx=0;
+let sy=0;
+
+viewer.addEventListener('pointerdown',e=>{
+dragging=true;
+sx=e.clientX;
+sy=e.clientY;
+});
+
+window.addEventListener('pointermove',e=>{
+
+if(!dragging) return;
+
+x+=e.clientX-sx;
+y+=e.clientY-sy;
+
+sx=e.clientX;
+sy=e.clientY;
+
+update();
+
+});
+
+window.addEventListener('pointerup',()=>{
+dragging=false;
+});
+
+</script>
+
+</body>
+</html>
+```
