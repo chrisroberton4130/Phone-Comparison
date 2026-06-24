@@ -2,47 +2,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Phone Comparison</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 html,body{
-margin:0;
-padding:0;
-overflow:hidden;
-background:#000;
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:black;
 }
 
 #viewer{
-width:100vw;
-height:100vh;
-overflow:hidden;
-position:relative;
-touch-action:none;
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    touch-action:none;
 }
 
-#left,#right{
-position:absolute;
-top:0;
-left:0;
-pointer-events:none;
+img{
+    position:absolute;
+    top:0;
+    left:0;
+    width:8192px;
+    height:auto;
 }
 
 #left{
-clip-path:inset(0 50% 0 0);
+    clip-path: inset(0 50% 0 0);
 }
 
 #right{
-clip-path:inset(0 0 0 50%);
+    clip-path: inset(0 0 0 50%);
 }
 
 #divider{
-position:absolute;
-left:50%;
-top:0;
-bottom:0;
-width:2px;
-background:white;
-z-index:100;
+    position:absolute;
+    left:50%;
+    top:0;
+    width:4px;
+    height:100%;
+    background:white;
+    z-index:999;
 }
 </style>
 </head>
@@ -52,10 +53,10 @@ z-index:100;
 <div id="viewer">
 
 <img id="left"
-src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTN-NXJqKCUFuqmQCelVnwiqZ8-GDmVI6SQNmZJprxhPvYNrAUsnKjt8Sk6QEJGV8pvw3pfACzFBkAw5e2oXbooav2L-Sy9eOXF39ponr2N_4-oFR5uvE22yi2QpUrp6OXpwI_H4oazCm4MzlHR1cWlDXu6c0Z1pNEy8bLz59kXrw4I0qxWlUzbRwPXatn/s16000/X200U.jpg">
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEivfMTqbuowVAwXP9I2qcq1fS3SI3bC8tdgntU-hTlk91cGhpKUXwhKE_VGh3qSbGERPsJmH6szBAXZLsrEHe_HkFY2fQIpPoaOBc2OhcZeIG6p3W5knN7V2MeNpviOGJWBNyteYgvMkvZr2-EezYAhbb7oG2z3fjwf3Ya8-rfgZChdK1chsraXxaA7zgE0/s16000/IMG20260616232617_0001_x8u.jpg">
 
 <img id="right"
-src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-WdTYZKSETiLxd3hlZana4syFMPvIbnnjNgdvNHRr65oHD43p8B5AwBkORV-_zwifrcGNxk0Ah298Fgt5ViGTlskIpfb4r1ZqNx0NhJpL8JWWW9QvRACKzUVy4v4x8ggLBuSDwnocMRe4g8znClgYmZugVr6zmZb6SQbDteN2cjgwUnRYkmjFiMVnlFzv/s16000/X8U.jpg">
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigCCigDUdm814BgCthH8NHTYLjvRCvfpatFazRL6y_Y1XhtitBEkZoT7h03CZKntygDdCV7Wdex7ZWV6eMoYzbzFtHWp2SSf3-m5ETHN8aHBF7-g_yWbvLnMpMitg1kKq46sc2Fx0g6hQNBp_3eo8CM1B5SWn4NCM33LRhuJhl48w6zyEFL7wtSOjzLVM3/s8057/IMG20260616232617_0000_x9p.jpg">
 
 <div id="divider"></div>
 
@@ -63,52 +64,48 @@ src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-WdTYZKSETiLxd3
 
 <script>
 
-const left=document.getElementById('left');
-const right=document.getElementById('right');
-const viewer=document.getElementById('viewer');
+let x = -3500;
+let y = -2500;
 
-let x=0;
-let y=0;
+const left = document.getElementById('left');
+const right = document.getElementById('right');
 
 function update(){
-left.style.transform=`translate(${x}px,${y}px)`;
-right.style.transform=`translate(${x}px,${y}px)`;
+    left.style.transform =
+        `translate(${x}px,${y}px)`;
+
+    right.style.transform =
+        `translate(${x}px,${y}px)`;
 }
 
-left.onload=function(){
-
-x=(viewer.clientWidth-left.naturalWidth)/2;
-y=(viewer.clientHeight-left.naturalHeight)/2;
-
 update();
-};
 
-let dragging=false;
-let sx=0;
-let sy=0;
+let dragging = false;
+let startX = 0;
+let startY = 0;
 
-viewer.addEventListener('pointerdown',e=>{
-dragging=true;
-sx=e.clientX;
-sy=e.clientY;
+document.getElementById('viewer')
+.addEventListener('pointerdown',e=>{
+    dragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+});
+
+window.addEventListener('pointerup',()=>{
+    dragging = false;
 });
 
 window.addEventListener('pointermove',e=>{
 
-if(!dragging) return;
+    if(!dragging) return;
 
-x+=e.clientX-sx;
-y+=e.clientY-sy;
+    x += e.clientX - startX;
+    y += e.clientY - startY;
 
-sx=e.clientX;
-sy=e.clientY;
+    startX = e.clientX;
+    startY = e.clientY;
 
-update();
-
-});
-
-window.addEventListener('pointerup',()=>{
-dragging=false;
+    update();
 });
 
 </script>
