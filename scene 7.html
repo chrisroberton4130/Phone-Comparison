@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scene 8 - X8 Ultra vs X9 Pro</title>
+
+<style>
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    background:#1a1a1a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+#viewer{
+    position:relative;
+    width:1200px;
+    height:760px;
+    overflow:hidden;
+    background:black;
+    border:2px solid #666;
+    box-shadow:0 0 30px rgba(0,0,0,.7);
+    touch-action:none;
+    cursor:grab;
+}
+
+#viewer:active{
+    cursor:grabbing;
+}
+
+#leftPane,
+#rightPane{
+    position:absolute;
+    top:0;
+    height:calc(100% - 88px);
+    width:50%;
+    overflow:hidden;
+}
+
+#leftPane{
+    left:0;
+}
+
+#rightPane{
+    right:0;
+}
+
+#leftImg,
+#rightImg{
+    position:absolute;
+    top:0;
+    left:0;
+    user-select:none;
+    pointer-events:none;
+    -webkit-user-drag:none;
+}
+
+#divider{
+    position:absolute;
+    left:50%;
+    top:0;
+    width:3px;
+    height:calc(100% - 88px);
+    background:white;
+    transform:translateX(-50%);
+    z-index:1000;
+    box-shadow:0 0 8px rgba(255,255,255,.7);
+}
+
+#watermarks{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:88px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    z-index:1500;
+}
+
+.wm{
+    position:relative;
+    padding:18px 24px;
+    box-sizing:border-box;
+}
+
+.wm-x8{
+    background:#f3f3f3;
+    color:#111;
+}
+
+.wm-x9{
+    background:#000;
+    color:#fff;
+}
+
+.wm-phone{
+    font-size:20px;
+    font-weight:400;
+    margin-bottom:10px;
+}
+
+.wm-meta{
+    font-size:14px;
+    opacity:.7;
+}
+
+.wm-logo{
+    position:absolute;
+    right:18px;
+    top:6px;
+    font-size:70px;
+    font-style:italic;
+    font-weight:700;
+    line-height:1;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="viewer">
+
+    <div id="leftPane">
+        <img id="leftImg"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNXkEsk_6UMqN8K4Sk14xQlaKMrVCB9NoByAI3iPrzuQtGVEYkpknmuG_eRQbJtui50n39NKHANgTOZt0yXnA-hV2Xa8Z0cNMN9bqLL4nPPxdEbSTz08hctOIxo0mQfnDygE0mFdUmqeA4i9XWHPINCozfOpXzyqu4bxd9SznU-zPEv292p4BLgPVMcTZf/s16000/8_x8u%20iso80%20ss1:60.jpg">
+    </div>
+
+    <div id="rightPane">
+        <img id="rightImg"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGhxQH8Olgfd2vU7cVex3-L9SWnVGbHk16J7a8zKLdUYWsBDjDh_2bhH_AQfL43P_O6vRvCpKnoxxNhurwubFmcfcbLivjYvBi0ukkeMnssL3yyJ-2xEOurK-QUtprAUOq6uT6Bdes4ZMOKBEYUHmIpCdjMoP7SOhDWGLSBmXEIrDdFuPxV4mKFunm37Ko/s16000/8_x9p%20iso80%20ss1:60.jpg">
+    </div>
+
+    <div id="divider"></div>
+
+    <div id="watermarks">
+
+        <div class="wm wm-x8">
+
+            <div class="wm-phone">
+                OPPO Find X8 Ultra
+            </div>
+
+            <div class="wm-meta">
+                70mm &nbsp;&nbsp; f/2.1 &nbsp;&nbsp; 1/60s &nbsp;&nbsp; ISO80
+            </div>
+
+            <div class="wm-logo">
+                H
+            </div>
+
+        </div>
+
+        <div class="wm wm-x9">
+
+            <div class="wm-phone">
+                OPPO Find X9 Pro
+            </div>
+
+            <div class="wm-meta">
+                70mm &nbsp;&nbsp; f/2.1 &nbsp;&nbsp; 1/60s &nbsp;&nbsp; ISO80
+            </div>
+
+            <div class="wm-logo">
+                H
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const viewer = document.getElementById('viewer');
+const leftImg = document.getElementById('leftImg');
+const rightImg = document.getElementById('rightImg');
+
+let panX = 0;
+let panY = 0;
+
+function update(){
+
+    leftImg.style.transform =
+        `translate(${panX}px,${panY}px)`;
+
+    rightImg.style.transform =
+        `translate(${panX}px,${panY}px)`;
+
+}
+
+leftImg.onload = function(){
+
+    panX =
+        (viewer.clientWidth / 2)
+        - (leftImg.naturalWidth / 2);
+
+    panY =
+        ((viewer.clientHeight - 88) / 2)
+        - (leftImg.naturalHeight / 2);
+
+    update();
+
+};
+
+let dragging = false;
+let startX = 0;
+let startY = 0;
+
+viewer.addEventListener('pointerdown',e=>{
+
+    dragging = true;
+
+    startX = e.clientX;
+    startY = e.clientY;
+
+});
+
+window.addEventListener('pointerup',()=>{
+
+    dragging = false;
+
+});
+
+window.addEventListener('pointermove',e=>{
+
+    if(!dragging) return;
+
+    panX += e.clientX - startX;
+    panY += e.clientY - startY;
+
+    startX = e.clientX;
+    startY = e.clientY;
+
+    update();
+
+});
+
+</script>
+
+</body>
+</html>

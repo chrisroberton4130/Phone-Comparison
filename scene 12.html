@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scene 66 - X8 Ultra vs Vivo X200 Ultra</title>
+
+<style>
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    background:#1a1a1a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+#viewer{
+    position:relative;
+    width:1200px;
+    height:760px;
+    overflow:hidden;
+    background:black;
+    border:2px solid #666;
+    box-shadow:0 0 30px rgba(0,0,0,.7);
+    touch-action:none;
+    cursor:grab;
+}
+
+#viewer:active{
+    cursor:grabbing;
+}
+
+#leftPane,
+#rightPane{
+    position:absolute;
+    top:0;
+    height:calc(100% - 88px);
+    width:50%;
+    overflow:hidden;
+}
+
+#leftPane{
+    left:0;
+}
+
+#rightPane{
+    right:0;
+}
+
+#leftImg,
+#rightImg{
+    position:absolute;
+    top:0;
+    left:0;
+    user-select:none;
+    pointer-events:none;
+    -webkit-user-drag:none;
+}
+
+#divider{
+    position:absolute;
+    left:50%;
+    top:0;
+    width:3px;
+    height:calc(100% - 88px);
+    background:white;
+    transform:translateX(-50%);
+    z-index:1000;
+    box-shadow:0 0 8px rgba(255,255,255,.7);
+}
+
+#watermarks{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:88px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    z-index:1500;
+}
+
+.wm{
+    position:relative;
+    padding:18px 24px;
+    box-sizing:border-box;
+}
+
+.wm-x8{
+    background:#f3f3f3;
+    color:#111;
+}
+
+.wm-vivo{
+    background:#000;
+    color:#fff;
+}
+
+.wm-phone{
+    font-size:20px;
+    font-weight:400;
+    margin-bottom:10px;
+}
+
+.wm-meta{
+    font-size:14px;
+    opacity:.7;
+}
+
+.wm-logo{
+    position:absolute;
+    right:18px;
+    top:6px;
+    font-size:70px;
+    font-style:italic;
+    font-weight:700;
+    line-height:1;
+}
+
+.vivo-wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height:100%;
+}
+
+.vivo-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.vivo-name{
+    font-size:20px;
+    color:white;
+}
+
+.zeiss{
+    background:#1d4ed8;
+    color:white;
+    padding:5px 10px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.vivo-meta{
+    color:white;
+    font-size:14px;
+    opacity:.95;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="viewer">
+
+    <div id="leftPane">
+        <img id="leftImg"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2ez9a69NjACT8JBFU1OlaoC3fSGC7B3oJHIoV_vRfm1gmH8qoYaJxaG206SJyK8N5b4MwekppyPikLj5rSfikjQDQH_oEY4Ln6dG8BBJaRBqIvxOyxx03WjvXqGwOcbpG2VEaBwz3ONEFMwbCZF7oENzwfUfjBxEblcPZ0LbvQfbcmZSQhpS_QTgMFhKL/s16000/66_x8u%20iso250%20ss1:120.jpg">
+    </div>
+
+    <div id="rightPane">
+        <img id="rightImg"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6HC6nZ82yal3P4D-uqP0eFEWdFtBspvvfUoT4oc4Eav6Zd-Vgi_hB0S9tdDWbXQYlSH9RTKqEQleWygECDRb4JT8HXxRL9lAVcixyrBvO72SGM8fOpNi30NEKkBuzS3Dj6I-gupgyM2EN3Mnz_HYOxBMw3gVDamFRc6QzbwbQbrySJzHsibXvfUgHS7Lw/s16000/66_x200u%20iso250%20ss1:65.jpg">
+    </div>
+
+    <div id="divider"></div>
+
+    <div id="watermarks">
+
+        <div class="wm wm-x8">
+
+            <div class="wm-phone">
+                OPPO Find X8 Ultra
+            </div>
+
+            <div class="wm-meta">
+                70mm &nbsp;&nbsp; f/2.1 &nbsp;&nbsp; 1/120s &nbsp;&nbsp; ISO250
+            </div>
+
+            <div class="wm-logo">
+                H
+            </div>
+
+        </div>
+
+        <div class="wm wm-vivo">
+
+            <div class="vivo-wrap">
+
+                <div class="vivo-left">
+
+                    <div class="vivo-name">
+                        Vivo X200 Ultra
+                    </div>
+
+                    <div class="zeiss">
+                        ZEISS
+                    </div>
+
+                </div>
+
+                <div class="vivo-meta">
+                    85mm &nbsp;&nbsp; f/2.3 &nbsp;&nbsp; 1/65s &nbsp;&nbsp; ISO250
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const viewer = document.getElementById('viewer');
+const leftImg = document.getElementById('leftImg');
+const rightImg = document.getElementById('rightImg');
+
+let panX = 0;
+let panY = 0;
+
+function update(){
+
+    leftImg.style.transform =
+        `translate(${panX}px,${panY}px)`;
+
+    rightImg.style.transform =
+        `translate(${panX}px,${panY}px)`;
+
+}
+
+leftImg.onload = function(){
+
+    panX =
+        (viewer.clientWidth / 2)
+        - (leftImg.naturalWidth / 2);
+
+    panY =
+        ((viewer.clientHeight - 88) / 2)
+        - (leftImg.naturalHeight / 2);
+
+    update();
+
+};
+
+let dragging = false;
+let startX = 0;
+let startY = 0;
+
+viewer.addEventListener('pointerdown',e=>{
+
+    dragging = true;
+
+    startX = e.clientX;
+    startY = e.clientY;
+
+});
+
+window.addEventListener('pointerup',()=>{
+
+    dragging = false;
+
+});
+
+window.addEventListener('pointermove',e=>{
+
+    if(!dragging) return;
+
+    panX += e.clientX - startX;
+    panY += e.clientY - startY;
+
+    startX = e.clientX;
+    startY = e.clientY;
+
+    update();
+
+});
+
+</script>
+
+</body>
+</html>
