@@ -239,8 +239,8 @@ window.addEventListener('pointermove',e=>{
 
     if(!dragging) return;
 
-    panX += e.clientX - startX;
-    panY += e.clientY - startY;
+    panX += (e.clientX - startX) * 4;
+    panY += (e.clientY - startY) * 4;
 
     startX = e.clientX;
     startY = e.clientY;
