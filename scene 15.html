@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Scene 111 - X8 Ultra vs Vivo X200 Ultra</title>
+<title>Scene 15 - X8 Ultra vs X9 Pro</title>
 
 <style>
 
@@ -44,8 +44,13 @@ html,body{
     overflow:hidden;
 }
 
-#leftPane{left:0;}
-#rightPane{right:0;}
+#leftPane{
+    left:0;
+}
+
+#rightPane{
+    right:0;
+}
 
 #leftImg,
 #rightImg{
@@ -91,19 +96,20 @@ html,body{
     color:#111;
 }
 
-.wm-vivo{
+.wm-x9{
     background:#000;
     color:#fff;
 }
 
 .wm-phone{
     font-size:20px;
+    font-weight:400;
     margin-bottom:10px;
 }
 
 .wm-meta{
     font-size:14px;
-    opacity:.75;
+    opacity:.7;
 }
 
 .wm-logo{
@@ -113,37 +119,7 @@ html,body{
     font-size:70px;
     font-style:italic;
     font-weight:700;
-}
-
-.vivo-wrap{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    height:100%;
-}
-
-.vivo-left{
-    display:flex;
-    align-items:center;
-    gap:14px;
-}
-
-.vivo-name{
-    font-size:20px;
-    color:#fff;
-}
-
-.zeiss{
-    background:#1d4ed8;
-    color:#fff;
-    padding:5px 10px;
-    font-size:13px;
-    font-weight:700;
-}
-
-.vivo-meta{
-    color:#fff;
-    font-size:14px;
+    line-height:1;
 }
 
 </style>
@@ -155,12 +131,12 @@ html,body{
 
     <div id="leftPane">
         <img id="leftImg"
-        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhI3GeNgiwstgukWMZ45MSltppACR1RP0o7G286qXZvXynWQkpMR2KShc1ek0hHW5WSmuo8z7zLsi2uD69aBfDcsWQsa98vcIyyKuDfzyc-mocuWB94_AN6eEC0Ymtnaw9emmVKdJo2c1TCZSIDwQgBYDGatolWTGI97PRq6VE4ED1pWUmdPc0vzkHJ4Mfk/s16000/111%20x8u%20iso50%20ss1:100.jpg">
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPBQ7MK-bbON7LLjCLzauxgGsLrTMGaYaVQXo68Gj-UKw4f4gzu_mBIMNyNb2Fji1LFy04OzAJEf2f72JFBGvDToxZt1LL4wUlPHjQ-ktZUDMktomRT39nILEmB6OD7Rk99nPTRUjAhTOg_KMK26dCmHt2iCQ6fOaPUJ4qCfofB-_UknuNyAMrnZXycvYM/s16000/01_X8U%20iso320%20ss1:100.jpg">
     </div>
 
     <div id="rightPane">
         <img id="rightImg"
-        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfyE7IQEhJiUJ1Ywct6tbN5cRrrSodVbLaBgf8ZaKkbZqBxiQhzs5cL-m1HdOO9nhkzMYbgU0dDpzBNdaR5dXxIkaxKI0hvQ9rTO5vzcauw-cqig1xfflH3Idp7DC0HMmryYdEFl4YiuwEnocWuW5njhrFQ-DNS5jnNXLb5GU0akzE1IL3y0i8Djno3xih/s16000/111%20x200u%20iso50%20ss1:100.jpg">
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAJ_WEddXKQo4wRCl7-iwHhkq104Sq6a__G4ywKdVueZU2G6awDwAfoJACN0Jv5P9AnjddeExipEt1VgqtIGyW3xiJIFijc6u-dAuHnYq9msxpLaZ23htuQFoQmN1mTU2kb_vwgd8Sga5VaP9z38Pc6P_XDZ6sY-OPnsvb4ydpAA6Axdj2LnK2a_-olUqS/s16000/01_X9%20Pro%20iso500%20ss1:60.jpg">
     </div>
 
     <div id="divider"></div>
@@ -174,33 +150,27 @@ html,body{
             </div>
 
             <div class="wm-meta">
-                70mm &nbsp;&nbsp; f/2.1 &nbsp;&nbsp; 1/100s &nbsp;&nbsp; ISO50
+                70mm &nbsp;&nbsp; f/2.1 &nbsp;&nbsp; 1/100s &nbsp;&nbsp; ISO320
             </div>
 
-            <div class="wm-logo">H</div>
+            <div class="wm-logo">
+                H
+            </div>
 
         </div>
 
-        <div class="wm wm-vivo">
+        <div class="wm wm-x9">
 
-            <div class="vivo-wrap">
+            <div class="wm-phone">
+                OPPO Find X9 Pro
+            </div>
 
-                <div class="vivo-left">
+            <div class="wm-meta">
+                70mm &nbsp;&nbsp; f/2.1 &nbsp;&nbsp; 1/60s &nbsp;&nbsp; ISO500
+            </div>
 
-                    <div class="vivo-name">
-                        Vivo X200 Ultra
-                    </div>
-
-                    <div class="zeiss">
-                        ZEISS
-                    </div>
-
-                </div>
-
-                <div class="vivo-meta">
-                    85mm &nbsp;&nbsp; f/2.3 &nbsp;&nbsp; 1/100s &nbsp;&nbsp; ISO50
-                </div>
-
+            <div class="wm-logo">
+                H
             </div>
 
         </div>
@@ -211,48 +181,68 @@ html,body{
 
 <script>
 
-const viewer=document.getElementById('viewer');
-const leftImg=document.getElementById('leftImg');
-const rightImg=document.getElementById('rightImg');
+const viewer = document.getElementById('viewer');
+const leftImg = document.getElementById('leftImg');
+const rightImg = document.getElementById('rightImg');
 
-let panX=0;
-let panY=0;
+let panX = 0;
+let panY = 0;
 
 function update(){
-leftImg.style.transform=`translate(${panX}px,${panY}px)`;
-rightImg.style.transform=`translate(${panX}px,${panY}px)`;
+
+    leftImg.style.transform =
+        `translate(${panX}px,${panY}px)`;
+
+    rightImg.style.transform =
+        `translate(${panX}px,${panY}px)`;
+
 }
 
-leftImg.onload=function(){
-panX=(viewer.clientWidth/2)-(leftImg.naturalWidth/2);
-panY=((viewer.clientHeight-88)/2)-(leftImg.naturalHeight/2);
-update();
+leftImg.onload = function(){
+
+    panX =
+        (viewer.clientWidth / 2)
+        - (leftImg.naturalWidth / 2);
+
+    panY =
+        ((viewer.clientHeight - 88) / 2)
+        - (leftImg.naturalHeight / 2);
+
+    update();
+
 };
 
-let dragging=false;
-let startX=0;
-let startY=0;
+let dragging = false;
+let startX = 0;
+let startY = 0;
 
 viewer.addEventListener('pointerdown',e=>{
-dragging=true;
-startX=e.clientX;
-startY=e.clientY;
+
+    dragging = true;
+
+    startX = e.clientX;
+    startY = e.clientY;
+
 });
 
 window.addEventListener('pointerup',()=>{
-dragging=false;
+
+    dragging = false;
+
 });
 
 window.addEventListener('pointermove',e=>{
-if(!dragging)return;
 
-panX+=(e.clientX-startX)*2;
-panY+=(e.clientY-startY)*2;
+    if(!dragging) return;
 
-startX=e.clientX;
-startY=e.clientY;
+    panX += (e.clientX - startX) * 2;
+    panY += (e.clientY - startY) * 2;
 
-update();
+    startX = e.clientX;
+    startY = e.clientY;
+
+    update();
+
 });
 
 </script>
