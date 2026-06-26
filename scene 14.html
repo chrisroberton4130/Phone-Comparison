@@ -108,11 +108,51 @@ html,body{
 
 .wm-logo{
     position:absolute;
-    right:18px;
-    top:6px;
-    font-size:70px;
-    font-style:italic;
-    font-weight:700;
+    right:22px;
+    top:50%;
+    transform:translateY(-50%);
+    width:44px;
+    height:auto;
+    display:block;
+    user-select:none;
+    pointer-events:none;
+}
+
+.vivo-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:100%;
+}
+
+.vivo-left{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.vivo-name{
+    font-size:20px;
+    color:#fff;
+    white-space:nowrap;
+}
+
+.vivo-divider{
+    width:1px;
+    height:34px;
+    background:rgba(255,255,255,.45);
+}
+
+.zeiss-logo{
+    width:42px;
+    height:auto;
+    display:block;
+}
+
+.vivo-meta{
+    font-size:14px;
+    color:#fff;
+    white-space:nowrap;
 }
 
 .vivo-wrap{
@@ -177,7 +217,7 @@ html,body{
                 70mm &nbsp;&nbsp; f/2.1 &nbsp;&nbsp; 1/11s &nbsp;&nbsp; ISO1600
             </div>
 
-            <div class="wm-logo">H</div>
+            <img class="wm-logo" src="https://chrisroberton4130.github.io/Phone-Comparison/H-black.svg" alt="Hasselblad">
 
         </div>
 
@@ -185,25 +225,23 @@ html,body{
 
             <div class="vivo-wrap">
 
-                <div class="vivo-left">
+<div class="vivo-left">
+<div class="vivo-name">Vivo X200 Ultra</div>
+<div class="vivo-divider"></div>
+<img class="zeiss-logo"
+src="https://chrisroberton4130.github.io/Phone-Comparison/zeiss.svg"
+alt="ZEISS">
+</div>
 
-                    <div class="vivo-name">
-                        Vivo X200 Ultra
-                    </div>
+<div class="vivo-meta">
+85mm &nbsp;&nbsp; f/2.3 &nbsp;&nbsp; 1/15s &nbsp;&nbsp; ISO4990
+</div>
 
-                    <div class="zeiss">
-                        ZEISS
-                    </div>
+</div>
 
-                </div>
+</div>
 
-                <div class="vivo-meta">
-                    85mm &nbsp;&nbsp; f/2.3 &nbsp;&nbsp; 1/15s &nbsp;&nbsp; ISO4990
-                </div>
-
-            </div>
-
-        </div>
+</div>
 
     </div>
 
